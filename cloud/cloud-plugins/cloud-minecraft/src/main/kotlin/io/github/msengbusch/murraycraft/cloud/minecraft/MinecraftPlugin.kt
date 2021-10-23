@@ -1,4 +1,4 @@
-package io.github.msengbusch.murrycraft.cloud.minecraft
+package io.github.msengbusch.murraycraft.cloud.minecraft
 
 import io.github.msengbusch.murraycraft.cloud.api.plugin.IPlugin
 

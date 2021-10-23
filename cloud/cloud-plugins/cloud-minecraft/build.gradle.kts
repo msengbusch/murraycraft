@@ -3,5 +3,5 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":cloud-api"))
+    implementation(project(":cloud:cloud-api"))
 }
