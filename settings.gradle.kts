@@ -1,3 +1,8 @@
 rootProject.name = "murraycraft"
 
-include("cloud", "cloud-api", "cloud-plugins", "proxy-plugins", "server-plugins")
+include("cloud-api")
+include("cloud-plugins", "cloud-plugins:cloud-minecraft")
+include("cloud")
+
+include("proxy-plugins")
+include("server-plugins")

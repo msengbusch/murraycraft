@@ -18,3 +18,29 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-scripting-jvm:1.5.31")
     implementation("org.jetbrains.kotlin:kotlin-scripting-jvm-host:1.5.31")
 }
+
+tasks {
+   create<Copy>("copyPlugins") {
+        into("run/plugins")
+
+       project(":cloud-plugins").subprojects {
+           //dependsOn(this)
+           afterEvaluate {
+               dependsOn(tasks.getByName("jar"))
+               from(tasks.getByName("jar"))
+           }
+       }
+
+        //dependsOn(":cloud-plugins:cloud-minecraft:jar")
+        //from(project(":cloud-plugins:cloud-minecraft").task)
+
+        /*project(":cloud-plugins").subprojects.forEach {
+            //dependsOn(subproject)
+            //dependsOn(":cloud-plugins:${subproject.name}:jar")
+            //from(":cloud-plugins:${subproject.name}:jar")
+            //subproject.afterEvaluate {
+                from(it.tasks.named("jar"))
+            //}
+        }*/
+    }
+}
