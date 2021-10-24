@@ -18,5 +18,9 @@ tasks {
     withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         sourceCompatibility = JavaVersion.VERSION_16.toString()
         targetCompatibility = JavaVersion.VERSION_16.toString()
+
+        kotlinOptions {
+            jvmTarget = JavaVersion.VERSION_16.toString()
+        }
     }
 }
