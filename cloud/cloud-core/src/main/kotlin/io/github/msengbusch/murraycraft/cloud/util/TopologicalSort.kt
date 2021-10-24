@@ -41,7 +41,7 @@ object TopologicalSort {
         }
 
         if(order.size != graph.size) {
-            throw IllegalArgumentException("Failed to create dependency graph. There must be a cycle")
+            throw IllegalArgumentException("Failed to create graph. There must be a cycle")
         }
 
         return order

@@ -27,6 +27,8 @@ class TemplateLoader {
             .toMap()
             .mapValues { GraphNode(it.key, it.value) }
 
+        Logger.debug("Load ${definitions.size} templates")
+
         definitions.forEach { (name, node) ->
             node.value.extends?.forEach {
                 node.neighbours.add(definitions[it] ?: throw PluginException("Template $name extends unknown template $it"))
