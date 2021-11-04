@@ -22,31 +22,6 @@ class DefaultCompilationConfiguration : ScriptCompilationConfiguration({
     }
 
     hostConfiguration(ScriptingHostConfiguration {
-        jvm {
-            val cacheBaseDir = File("cache")
-            if(!cacheBaseDir.exists()) {
-                cacheBaseDir.mkdirs()
-            }
-
-            compilationCache(
-                CompiledScriptJarsCache { script, scriptCompilationConfiguration ->
-                    File(cacheBaseDir, compiledScriptUniqueName(script, scriptCompilationConfiguration) + ".jar")
-                }
-            )
-        }
+        withJarScriptCache(File("cache"))
     })
 })
-
-private fun compiledScriptUniqueName(script: SourceCode, scriptCompilationConfiguration: ScriptCompilationConfiguration): String {
-    val digest = MessageDigest.getInstance("MD5")
-    digest.update(script.text.toByteArray())
-    scriptCompilationConfiguration.notTransientData.entries
-        .sortedBy { it.key.name }
-        .forEach {
-            digest.update(it.key.name.toByteArray())
-            digest.update(it.value.toString().toByteArray())
-        }
-    return digest.digest().toHexString()
-}
-
-private fun ByteArray.toHexString(): String = joinToString("", transform = { "%02x".format(it) })
