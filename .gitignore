@@ -2,4 +2,8 @@
 .idea
 
 build
-run
+
+cloud/run/**
+!cloud/run/scripts
+!cloud/run/scripts/**
+!cloud/run/build.gradle.kts

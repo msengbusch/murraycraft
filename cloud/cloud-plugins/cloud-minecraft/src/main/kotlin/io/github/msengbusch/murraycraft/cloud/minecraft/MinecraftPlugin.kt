@@ -1,6 +1,6 @@
 package io.github.msengbusch.murraycraft.cloud.minecraft
 
-import io.github.msengbusch.murraycraft.cloud.api.plugin.IPlugin
+import io.github.msengbusch.murraycraft.cloud.api.old.plugin.IPlugin
 
 class MinecraftPlugin : IPlugin {
     override fun init() {
