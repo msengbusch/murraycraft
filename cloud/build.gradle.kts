@@ -1,11 +1,15 @@
 tasks {
-   create<Copy>("copyPlugins") {
-        into("run/plugins")
+    create<Copy>("copyPlugins") {
+        into("run/modules")
 
-       project(":cloud:cloud-plugins").subprojects {
-           afterEvaluate {
-               from(tasks.getByName("jar"))
-           }
-       }
+        project(":cloud:cloud-modules").subprojects
+            .filter { !it.name.endsWith("api") }
+            .forEach {
+                with(it) {
+                    afterEvaluate {
+                        from(tasks.getByName("jar"))
+                    }
+                }
+            }
     }
 }
